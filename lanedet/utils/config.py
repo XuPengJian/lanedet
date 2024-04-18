@@ -93,6 +93,7 @@ class Config:
             raise SyntaxError('There are syntax errors in config '
                               f'file {filename}')
 
+    # 修改了文件读取权限的报错
     @staticmethod
     def _file2dict(filename):
         filename = osp.abspath(osp.expanduser(filename))
@@ -127,6 +128,7 @@ class Config:
                     # 删除临时文件
                     if temp_config_file.name:
                         os.unlink(temp_config_file.name)
+
         elif filename.endswith(('.yml', '.yaml', '.json')):
             import mmcv
             cfg_dict = mmcv.load(filename)
