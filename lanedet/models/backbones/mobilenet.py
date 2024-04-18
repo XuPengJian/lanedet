@@ -7,6 +7,7 @@ from typing import Callable, Any, Optional, List
 from lanedet.models.registry import BACKBONES
 
 
+# MobileNet下载地址，但这里我已经下好传到github上了
 model_urls = {
     'MobileNetV2': 'https://download.pytorch.org/models/mobilenet_v2-b0353104.pth',
 }
@@ -195,6 +196,7 @@ class MobileNet(nn.Module):
         if pretrained:
             # state_dict = load_state_dict_from_url(model_urls[net],
             #                                   progress=False)
+            # 因此这里直接在路径下直接读模型路径就可以了
             state_dict = 'mobilenet_v2.pth'
             self.model.load_state_dict(state_dict, strict=False)
 
